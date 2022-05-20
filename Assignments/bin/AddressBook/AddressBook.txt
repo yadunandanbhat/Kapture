@@ -1,0 +1,9 @@
+1|Jagadish|V G|Hospet|97|apple
+2|Nilesh|Hosure|Ugar|7|gmail
+3|Nirmal|Jain|Kottur|1|yahoo
+4|Phanishree|K|Ballari|3|baidu
+5|Pranav|R M|Sagara|9|amail
+6|Pratheek|Reddy|Chitradurga|89|yandex
+7|Shreesha|P|Koppa|4|gmail
+8|Tarun|Raina|Hatti|6|apple
+9|Yadunandan|Bhat|Yellapur|2|gmail

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Index</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+<div th:switch="${users}" style="text-align: center" class="w-50">
+    <h2 th:case="null">No users yet!</h2>
+    <div th:case="*">
+        <h2 class="fw-bold">Users</h2>
+        <table class="table table-striped align-middle">
+            <thead class="table-light">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Password</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            </thead>
+            <tbody class="table-group-divider">
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.password}"></td>
+                <td><a th:href="@{/edit/{id}(id=${user.id})}">
+                    <button type="button" class="btn btn-warning">Edit</button>
+                </a></td>
+                <td><a th:href="@{/delete/{id}(id=${user.id})}">
+                    <button type="button" class="btn btn-danger">Delete</button>
+                </a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/signup" class="link-primary" style="text-align: center">Add a new user</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+</body>
+</html>

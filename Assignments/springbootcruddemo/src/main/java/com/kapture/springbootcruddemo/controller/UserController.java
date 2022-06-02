@@ -1,42 +1,48 @@
 package com.kapture.springbootcruddemo.controller;
 
 import com.kapture.springbootcruddemo.entity.User;
-import com.kapture.springbootcruddemo.repository.UserRepository;
 import com.kapture.springbootcruddemo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+// @Controller
 @RestController
+@RequestMapping("/api/users")
 public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping("/users")
+    @PostMapping("/")
     public User saveUser(@Valid @RequestBody User user) {
         return userService.saveUser(user);
     }
 
-    @GetMapping("/users")
+    @GetMapping("/")
     public List<User> fetchUserList() {
         return userService.fetchUserList();
     }
 
-    @PutMapping("/users/{id}")
+    @PutMapping("/{id}")
     public User updateUser(@RequestBody User user, @PathVariable("id") Integer id) {
         return userService.updateUser(user, id);
     }
 
-    @DeleteMapping("/users/{id}")
+    @DeleteMapping("/{id}")
     public String deleteUserById(@PathVariable("id") Integer id) {
         userService.deleteUserById(id);
         return "Deleted successfully!";
     }
+/*
+    @RequestMapping("/listUsers")
+    public String listUsers(Model model) {
+        List<User> usersList = userService.fetchUserList();
+        model.addAttribute("users", usersList);
+        return "userList";
+    }
 
-/*    @GetMapping("/index")
+    @GetMapping("/index")
     public String showUserList(Model model) {
         model.addAttribute("users", userRepository.findAll());
         return "index";

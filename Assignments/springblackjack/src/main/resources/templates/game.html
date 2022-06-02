@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Blackjack</title>
+    <meta charset="UTF-8"/>
+    <meta content="text/html" http-equiv="Content-Type" name="viewport"/>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" rel="stylesheet">
+</head>
+<body>
+<div id="container" style="text-align: center;">
+    <h1>Blackjack</h1>
+    <form action="#" method="post" th:action="@{/player}" th:object="${game}">
+        <div>
+            <br>
+            <p>You have a total score of<br><input readonly="readonly" th:field="*{playerScore}" type="text"/></p>
+            <table th:each="card : ${game.playerCards}">
+                <tr th:text="${card}"></tr>
+            </table>
+        </div>
+        <br>
+        <div>
+            <p>Dealer has <tr th:text="*{firstDealerCard}"></tr></p>
+        </div>
+        <br>
+        <button class="btn btn-primary" type="submit">Hit</button>
+    </form>
+    <form action="#" method="post" th:action="@{/dealer}" th:object="${game}">
+        <button class="btn btn-danger" type="submit">Stay</button>
+    </form>
+</div>
+<script crossorigin="anonymous"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

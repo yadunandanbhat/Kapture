@@ -5,31 +5,31 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
-    <bean id="ToyotaBean" class="com.kapture.spring.ToyotaEngine">
+    <!--<bean id="ToyotaBean" class="com.kapture.spring.ToyotaEngine">
         <constructor-arg name="company" value="Toyota"></constructor-arg>
         <constructor-arg name="cost" value="900000"></constructor-arg>
-<!-- 		<property name="company" value="Toyota"> -->
-<!-- 		</property> -->
-<!-- 		<property name="cost" value="900000.00"> -->
-<!-- 		</property> -->
-	</bean>
+&lt;!&ndash; 		<property name="company" value="Toyota"> &ndash;&gt;
+&lt;!&ndash; 		</property> &ndash;&gt;
+&lt;!&ndash; 		<property name="cost" value="900000.00"> &ndash;&gt;
+&lt;!&ndash; 		</property> &ndash;&gt;
+	</bean>-->
 	<bean id="HondaBean" class="com.kapture.spring.HondaEngine">
 		<property name="company" value="Honda">
 		</property>
 		<property name="cost" value="760000.00">
 		</property>
 	</bean>
-    <bean id="tyre1Bean" class="com.kapture.spring.Tyres">
+    <!--<bean id="tyre1Bean" class="com.kapture.spring.Tyres">
         <constructor-arg name="name" value="Bridgestone"></constructor-arg>
         <constructor-arg name="dimension" value="112"></constructor-arg>
         <constructor-arg name="gripType" value="Hard"></constructor-arg>
-<!--         <property name="name" value="Bridgestone"> -->
-<!--         </property> -->
-<!--         <property name="dimension" value="112"> -->
-<!--         </property> -->
-<!--         <property name="gripType" value="Hard"> -->
-<!--         </property> -->
-    </bean>
+&lt;!&ndash;         <property name="name" value="Bridgestone"> &ndash;&gt;
+&lt;!&ndash;         </property> &ndash;&gt;
+&lt;!&ndash;         <property name="dimension" value="112"> &ndash;&gt;
+&lt;!&ndash;         </property> &ndash;&gt;
+&lt;!&ndash;         <property name="gripType" value="Hard"> &ndash;&gt;
+&lt;!&ndash;         </property> &ndash;&gt;
+    </bean>-->
 	<bean id="tyre2Bean" class="com.kapture.spring.Tyres">
 		<property name="name" value="Pirelli">
 		</property>

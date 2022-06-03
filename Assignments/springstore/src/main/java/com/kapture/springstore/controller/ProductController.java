@@ -54,15 +54,16 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Product> update(@PathVariable Long id, @RequestBody @Valid Product product, BindingResult bindingResult) {
+    public ResponseEntity<Product> update(@PathVariable Long id,
+                                          @RequestBody @Valid Product product, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             throw new BeanValidationException(bindingResult);
         }
 
         return this.productService.findById(id)
-                .map(existingProductDto -> {
+                .map(existingProduct -> {
                     product.setId(id);
-                    product.setDateCreated(existingProductDto.getDateCreated());
+                    product.setDateCreated(existingProduct.getDateCreated());
                     return ResponseEntity.ok(this.productService.update(product));
                 }).orElseThrow(() -> new ProductNotFoundException(id));
     }
@@ -75,5 +76,27 @@ public class ProductController {
                     return ResponseEntity.noContent().build();
                 })
                 .orElseThrow(() -> new ProductNotFoundException(id));
+    }
+
+    @PatchMapping("/{id}/{attr}")
+    public ResponseEntity<Product> updateName(@PathVariable Long id, @PathVariable String attr,
+                                              @RequestBody @Valid Product product, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            throw new BeanValidationException(bindingResult);
+        }
+
+        return this.productService.findById(id)
+                .map(existingProduct -> {
+                    switch (attr) {
+                        case "name" -> existingProduct.setName(product.getName());
+                        case "company" -> existingProduct.setCompany(product.getCompany());
+                        case "desc" -> existingProduct.setDescription(product.getDescription());
+                        case "price" -> existingProduct.setPrice(product.getPrice());
+                        case "quantity" -> existingProduct.setQuantity(product.getQuantity());
+                        case "imageURL" -> existingProduct.setImageURL(product.getImageURL());
+                        default -> ResponseEntity.badRequest();
+                    }
+                    return ResponseEntity.ok(this.productService.update(existingProduct));
+                }).orElseThrow(() -> new ProductNotFoundException(id));
     }
 }

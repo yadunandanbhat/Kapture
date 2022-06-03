@@ -20,8 +20,7 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public List<Product> searchProducts(String query) {
-        List<Product> products = productRepository.searchProducts(query);
-        return products;
+        return productRepository.searchProducts(query);
     }
 
     @Override
@@ -46,6 +45,12 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public Product update(Product product) {
+        product.setDateUpdated(LocalDateTime.now());
+        return productRepository.save(product);
+    }
+
+    @Override
+    public Product updateAttr(Product product) {
         product.setDateUpdated(LocalDateTime.now());
         return productRepository.save(product);
     }
